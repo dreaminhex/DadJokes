@@ -1,0 +1,95 @@
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sw?
+
+# Vite
+/ui/.vite
+
+# Dotnet
+/server/**/bin
+/server/**/obj
+bin/
+obj/
+/server/**/bin/Debug
+/server/**/bin/Debug/net9.0/*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vite
+/ui/.vite
+
+# Dotnet
+/server/**/bin/
+/server/**/obj/
+/server/**/bin/Debug/
+/server/**/bin/Debug/net9.0/
+*.exe
+*.dll
+*.pdb
+*.user
+*.suo
+*.cache
+*.vs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+notes.txt
+package-lock.json
+/**/package-lock.json
