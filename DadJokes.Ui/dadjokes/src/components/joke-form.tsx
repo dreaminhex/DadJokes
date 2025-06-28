@@ -40,7 +40,7 @@ export function JokeForm({
       setJokeResults(results)
       setRandomJoke(null)
     } catch {
-      setError("Couldn't search for jokes.")
+      setError("Provide a search term, you knucklehead.")
     }
   }
 
@@ -78,7 +78,7 @@ export function JokeForm({
       <GroupedJokeResults jokeResults={jokeResults} searchTerm={term} />
     </div>
   } else {
-    jokeContent = <p className="text-muted-foreground text-center">When you are ready for the absolute apex of humor, your joke, or jokes will appear here.</p>
+    jokeContent = <p className="text-muted-foreground text-center p-10 bangers-regular text-3xl">When you are ready for the absolute apex of humor, your joke, or jokes will appear here.</p>
   }
 
   return (
@@ -89,7 +89,7 @@ export function JokeForm({
             <form className="flex flex-col gap-6" onSubmit={handleSearch}>
               <div className="flex flex-col items-center text-center">
                 <img src="src/assets/dad.png" alt="Dad Joke Logo" className="w-24 h-24 mb-4" />
-                <h1 className="text-4xl font-bold mb-5">Welcome to Dad Jokes</h1>
+                <h1 className="font-bold mb-5 bangers-regular text-6xl text-blue-300">Welcome to Dad Jokes</h1>
                 <p className="text-muted-foreground text-left">
                   Since you appear to be a person with a fine sense of humor, you may select one of our fine jokes at random, or feel free to search our collection.
                 </p>
@@ -116,7 +116,7 @@ export function JokeForm({
               <Button type="submit" className="w-full p-6 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
                 Search for Dad Jokes
               </Button>
-              {error && <div className="text-destructive text-sm">{error}</div>}
+              {error && <div className="text-red-800 text-xl bangers-regular">{error}</div>}
             </form>
           </div>
           <div className="bg-muted md:flex flex-col p-4 h-full">

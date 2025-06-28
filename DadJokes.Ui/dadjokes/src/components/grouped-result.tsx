@@ -38,7 +38,7 @@ export function GroupedJokeResults({ jokeResults, searchTerm }: Readonly<Grouped
 
                 return (
                     <div key={group}>
-                        <Badge className={`text-2xl italic font-bold text-left ml-2 mb-4 ${index === 0 ? "mt-2" : "mt-4"} ${groupColors[group]}`}>
+                        <Badge className={`text-2xl italic font-bold text-left ml-2 mb-4 bangers-regular p-2 ${index === 0 ? "mt-0" : "mt-6"} ${groupColors[group]}`}>
                            {groupTitles[group]}
                         </Badge>
 
@@ -91,7 +91,7 @@ function highlightTerm(text: string, term: string): JSX.Element {
         <>
             {parts.map((part, i) =>
                 part.toLowerCase() === term.toLowerCase() ? (
-                    <mark key={i} className="bg-yellow-300 border-2 rounded-sm pl-1 pr-1 text-black font-semibold">
+                    <mark key={i} className="bg-yellow-300 border-2 rounded-sm pl-1 pr-1 ml-2 mr-1 text-black font-semibold">
                         {part}
                     </mark>
                 ) : (
