@@ -11,6 +11,6 @@ Swagger UI will be available at: [http://localhost:7878](http://localhost:7878)
 ## Running the UI
 
 ```bash
-cd ./DadJokes/DadJokes.Ui
+cd DadJokes.Ui/dadjokes
 npm run dev
 ```
