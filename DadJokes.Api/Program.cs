@@ -18,4 +18,13 @@ app.ConfigureWebApplication();
 app.RegisterEndpoints();
 
 // Kick the tires and light the fires.
-await app.RunAsync();
+if (app.Environment.IsDevelopment())
+{
+    // Run from launchSettings
+    await app.RunAsync();
+}
+else
+{
+    // Run within the Docker container
+    await app.RunAsync("http://0.0.0.0:80");
+}

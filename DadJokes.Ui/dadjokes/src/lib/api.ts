@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:7878";
+const API_URL = import.meta.env.VITE_API_URL ?? "https://fly.io/apps/dadjokes-w8kata";
 
 export interface DadJoke {
     id: string;
