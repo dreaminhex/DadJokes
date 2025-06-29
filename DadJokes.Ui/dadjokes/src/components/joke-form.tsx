@@ -88,7 +88,7 @@ export function JokeForm({
           <div className="p-6 md:p-8">
             <form className="flex flex-col gap-6" onSubmit={handleSearch}>
               <div className="flex flex-col items-center text-center">
-                <img src="src/assets/dad.png" alt="Dad Joke Logo" className="w-28 h-24 mb-4" />
+                <img src="/assets/dad.png" alt="Dad Joke Logo" className="w-28 h-24 mb-4" />
                 <h1 className="font-bold mb-5 bangers-regular text-6xl text-blue-300">Welcome to Dad Jokes</h1>
                 <p className="text-muted-foreground text-left">
                   Since you appear to be a person with a fine sense of humor, you may select one of our fine jokes at random, or feel free to search our collection.
