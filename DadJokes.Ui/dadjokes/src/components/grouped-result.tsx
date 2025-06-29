@@ -22,6 +22,14 @@ const groupColors: Record<JokeLength, string> = {
     Long: "bg-red-500",
 }
 
+/**
+ * Displays grouped joke results based on their length.
+ * Each group contains jokes that match the specified search term.
+ * @param param0 The grouped joke results and the search term.
+ * @param param0.jokeResults The jokes grouped by length.
+ * @param param0.searchTerm The search term used to filter jokes.
+ * @returns A JSX element displaying the grouped joke results.
+ */
 export function GroupedJokeResults({ jokeResults, searchTerm }: Readonly<GroupedJokeResultsProps>) {
     const [copiedId, setCopiedId] = useState<string | null>(null)
 
@@ -39,7 +47,7 @@ export function GroupedJokeResults({ jokeResults, searchTerm }: Readonly<Grouped
                 return (
                     <div key={group}>
                         <Badge className={`text-2xl italic font-bold text-left ml-2 mb-4 bangers-regular p-2 ${index === 0 ? "mt-0" : "mt-6"} ${groupColors[group]}`}>
-                           {groupTitles[group]}
+                            {groupTitles[group]}
                         </Badge>
 
                         {jokes.length === 0 ? (
@@ -81,6 +89,12 @@ export function GroupedJokeResults({ jokeResults, searchTerm }: Readonly<Grouped
     )
 }
 
+/**
+ * Highlights the specified term in the given text.
+ * @param text The text to search within.
+ * @param term The term to highlight.
+ * @returns A JSX element with the highlighted term.
+ */
 function highlightTerm(text: string, term: string): JSX.Element {
     if (!term) return <>{text}</>
 
@@ -91,14 +105,14 @@ function highlightTerm(text: string, term: string): JSX.Element {
         <>
             {parts.map((part, i) =>
                 part.toLowerCase() === term.toLowerCase() ? (
-                    <mark key={i} className="bg-yellow-300 border-2 rounded-sm pl-1 pr-1 ml-2 mr-1 text-black font-semibold">
+                    <mark key={`term-part-key-${i}`} className="bg-yellow-300 border-2 rounded-sm pl-1 pr-1 ml-2 mr-1 text-black font-semibold">
                         {part}
                     </mark>
                 ) : (
-                    <span key={i}>{part}</span>
+                    <span key={`term-part-key-${i}`}>{part}</span>
                 )
             )}
         </>
     )
 }
-  
+

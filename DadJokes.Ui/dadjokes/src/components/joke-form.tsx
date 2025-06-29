@@ -2,12 +2,12 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { getRandomJoke, searchJokes, type DadJoke, type JokeLength } from "@/lib/api"
 import { GroupedJokeResults } from "./grouped-result"
 import { motion } from "framer-motion"
 import { IconCopy } from "@tabler/icons-react"
+import { Badge } from "@/components/ui/badge"
 
 export function JokeForm({
   className,
@@ -88,13 +88,13 @@ export function JokeForm({
           <div className="p-6 md:p-8">
             <form className="flex flex-col gap-6" onSubmit={handleSearch}>
               <div className="flex flex-col items-center text-center">
-                <img src="src/assets/dad.png" alt="Dad Joke Logo" className="w-24 h-24 mb-4" />
+                <img src="src/assets/dad.png" alt="Dad Joke Logo" className="w-28 h-24 mb-4" />
                 <h1 className="font-bold mb-5 bangers-regular text-6xl text-blue-300">Welcome to Dad Jokes</h1>
                 <p className="text-muted-foreground text-left">
                   Since you appear to be a person with a fine sense of humor, you may select one of our fine jokes at random, or feel free to search our collection.
                 </p>
               </div>
-              <Button onClick={handleRandom} className="w-full p-6 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
+              <Button onClick={handleRandom} className="w-full p-6 bg-pink-500 text-zinc-200 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
                 Just Give Me A Random Dad Joke!
               </Button>
               <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
@@ -103,17 +103,19 @@ export function JokeForm({
                 </span>
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="searchTerm" className="p-4">Enter Your Jokey Joke Terms</Label>
+                <Badge className="text-xl italic font-bold text-left mb-4 bangers-regular p-2 mt-2">
+                  Ok, enter your little jokey joke search term then...
+                </Badge>
                 <Input
                   id="searchTerm"
                   type="text"
-                  placeholder="monty python"
+                  placeholder="bearded clams"
                   className="w-full p-6 placeholder:text-zinc-500 placeholder:italic placeholder:text-lg text-lg"
                   value={term}
                   onChange={(e) => setTerm(e.target.value)}
                 />
               </div>
-              <Button type="submit" className="w-full p-6 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
+              <Button type="submit" className="w-full p-6 bg-pink-700 text-zinc-300 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
                 Search for Dad Jokes
               </Button>
               {error && <div className="text-red-800 text-xl bangers-regular">{error}</div>}
