@@ -18,7 +18,7 @@ There are 2 parts to this project, the UI, and the API. You will need to run bot
 dotnet run --project ./DadJokes.Api/DadJokes.Api.csproj
 ```
 
-Swagger UI will be available at: [http://localhost:7878](http://localhost:7878)
+Swagger UI is available at: [http://localhost:7878](http://localhost:7878)
 
 ## Running the .NET Tests
 
@@ -35,6 +35,10 @@ npm run dev
 
 ## TL;DR; Version
 
-I've published the Docker image on fly.io, and the UI is live on Vercel. So, you can really just go to:
+I've published the Docker image on [fly.io](fly.io), and the UI is live on [Vercel](https://vercel.com/), hitting the fly.io image. So, you can really just go to:
 
+[Matthew's Dad Jokes App](https://dadjokes-ten-virid.vercel.app) and have some chuckles.
 
+If you wanna see the Swagger docs, you can check out [https://dadjokes-w8kata.fly.dev/](https://dadjokes-w8kata.fly.dev/)
+
+**Enjoy!**
