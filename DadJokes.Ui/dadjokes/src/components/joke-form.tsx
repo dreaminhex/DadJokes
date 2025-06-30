@@ -93,7 +93,7 @@ export function JokeForm({
                   Welcome to Dad Jokes</h1>
                 <div className="border-t border-border my-4 md:hidden" />
                 <p className="text-muted-foreground text-left">
-                  Since you appear to be a person with a fine sense of humor, you may select one of our fine jokes at random, or feel free to search our collection.
+                  You appear to be a person with a fine sense of humor, so you may select one of our fine jokes at random, or search our collection.
                 </p>
               </div>
               <Button onClick={handleRandom} className="w-full p-6 bg-pink-500 text-zinc-200 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
@@ -105,9 +105,9 @@ export function JokeForm({
                 </span>
               </div>
               <div className="grid gap-3">
-                <Badge className="text-xl italic font-bold text-left mb-4 bangers-regular p-2 mt-2">
-                  Ok, enter your little jokey joke search term...
-                </Badge>
+                <p className="text-md italic font-bold text-left mb-4 bangers-regular p-2 mt-2 text-zinc-300">
+                 Enter your little jokey joke search term...
+                </p>
                 <Input
                   id="searchTerm"
                   type="text"
