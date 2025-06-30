@@ -1,4 +1,3 @@
-import './App.css'
 import { ThemeProvider } from "@/components/theme-provider"
 import { JokeForm } from "@/components/joke-form"
 
