@@ -23,7 +23,7 @@ export function JokeForm() {
       setRandomJoke(joke)
       setJokeResults(null)
     } catch {
-      setError("Gosh darnit, couldn't get a random joke.")
+      setError("Dangit, couldn't think of a random joke.")
     }
   }
 
@@ -35,7 +35,7 @@ export function JokeForm() {
       setJokeResults(results)
       setRandomJoke(null)
     } catch {
-      setError("Hey, provide a search term, you knucklehead.")
+      setError("Hey, provide a search term first, knucklehead.")
     }
   }
 
@@ -99,14 +99,14 @@ export function JokeForm() {
               </span>
             </div>
             <div className="grid">
-              <p className="text-md italic font-bold text-left mb-4 bangers-regular p-2 mt-1 text-zinc-300">
-                Enter your little jokey joke search term then...
+              <p className="text-lg italic font-bold text-center mb-4 bangers-regular p-2 mt-1 text-zinc-300">
+                Enter your joke search term below...
               </p>
               <Input
                 id="searchTerm"
                 type="text"
-                placeholder="Go ahead, enter something stupid"
-                className="w-full p-6 placeholder:text-zinc-500 placeholder:italic placeholder:text-lg text-lg"
+                placeholder="Enter something silly, like 'hipster'..."
+                className="w-full p-6 placeholder:text-zinc-500 placeholder:italic placeholder:text-md text-xl"
                 value={term}
                 onChange={(e) => setTerm(e.target.value)}
               />
