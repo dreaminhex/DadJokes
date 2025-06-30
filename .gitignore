@@ -87,7 +87,6 @@ dist-ssr
 Thumbs.db
 
 # Environment
-.env
 notes.txt
 package-lock.json
 /**/package-lock.json
