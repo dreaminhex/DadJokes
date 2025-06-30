@@ -77,67 +77,63 @@ export function JokeForm() {
   }
 
   return (
-    <Card className="flex flex-col w-full max-w-screen-2xl mx-auto shadow-lg min-h-[85vh] mt-5 rounded-xl border border-border overflow-hidden">
-      <CardContent className="flex flex-col md:flex-row flex-1 p-0">
-        <div className="w-full md:w-1/3 p-6 md:p-8 overflow-auto">
-          <form className="flex flex-col gap-6" onSubmit={handleSearch}>
-            <div className="flex flex-col items-center text-center">
-              <img src="/assets/dad.png" alt="Dad Joke Logo" className="w-28 h-24 mb-4" />
-              <h1 className="font-bold mb-5 bangers-regular text-4xl md:text-6xl text-blue-300">
-                Welcome to Dad Jokes</h1>
-              <div className="border-t border-border my-4 md:hidden" />
-              <p className="text-muted-foreground text-left">
-                You are clearly a person with a fine sense of humor. You may select one of our fine jokes at random, or search our collection.
-              </p>
-            </div>
-            <Button onClick={handleRandom} className="w-full bangers-regular p-6 bg-pink-500 text-zinc-200 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
-              Random Dad Joke!
-            </Button>
-            <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
-              <span className="bg-card text-muted-foreground relative z-10 px-2">
-                Want something specific?
-              </span>
-            </div>
-            <div className="grid">
-              <p className="text-lg italic font-bold text-center mb-4 bangers-regular p-2 mt-1 text-zinc-300">
-                Enter your joke search term below...
-              </p>
-              <Input
-                id="searchTerm"
-                type="text"
-                placeholder="Enter something silly, like 'hipster'..."
-                className="w-full p-6 placeholder:text-zinc-500 placeholder:italic placeholder:text-md text-xl"
-                value={term}
-                onChange={(e) => setTerm(e.target.value)}
-              />
-            </div>
-            <Button type="submit" className="w-full bangers-regular p-6 bg-pink-700 text-zinc-300 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
-              Search for Dad Jokes
-            </Button>
-            {error && <div className="text-red-800 text-xl bangers-regular">{error}</div>}
-          </form>
-        </div>
-        <div className="bg-muted flex flex-col p-4 overflow-auto m-5 rounded-2xl">
+    <div className="min-h-screen flex items-center justify-center">
+      <Card className="flex flex-col w-full max-w-screen-2xl mx-auto shadow-lg sm:mt-0 lg:rounded-xl overflow-hidden lg:border rounded-none border-0">
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="flex-grow"
-          >
-            {jokeContent}
-          </motion.div>
-        </div>
-      </CardContent>
-      <CardFooter className="text-muted-foreground text-center text-sm justify-center bg-card flex flex-wrap gap-x-1 px-4 py-4 leading-relaxed text-balance">
-        <span>Made with</span>
-        <span className="text-red-500 text-xl">♥</span>
-        <span>by</span>
-        <a href="https://github.com/dreaminhex" className="underline">dreaminhex</a>
-        <span>using jokes from</span>
-        <a href="https://icanhazdadjoke.com/" className="underline">icanhazdadjoke.com</a>
-      </CardFooter>
-
-    </Card>
+        <CardContent className="flex flex-col md:flex-row flex-1 p-0">
+          <div className="w-full md:w-1/3 p-6 md:p-8 overflow-auto">
+            <form className="flex flex-col gap-6" onSubmit={handleSearch}>
+              <div className="flex flex-col items-center text-center">
+                <img src="/assets/dad.png" alt="Dad Joke Logo" className="w-28 h-24 mb-4" />
+                <h1 className="font-bold mb-5 bangers-regular text-4xl md:text-6xl text-blue-300">
+                  Welcome to Dad Jokes</h1>
+                <div className="border-t border-border lg:my-4 md:hidden" />
+                <p className="text-muted-foreground text-left">
+                  You are clearly a person with a fine sense of humor. You may select one of our fine jokes at random, or search our collection.
+                </p>
+              </div>
+              <Button onClick={handleRandom} className="w-full bangers-regular p-6 bg-pink-500 text-zinc-200 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
+                Random Dad Joke!
+              </Button>
+              <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+                <span className="bg-card text-muted-foreground relative z-10 px-2">
+                  Want something specific?
+                </span>
+              </div>
+              <div className="grid">
+                <p className="text-xl text-center mb-4 bangers-regular text-zinc-300">
+                  Enter your joke search term below
+                </p>
+                <Input
+                  id="searchTerm"
+                  type="text"
+                  placeholder="Enter something silly, like 'hipster'..."
+                  className="w-full p-6 placeholder:text-zinc-500 placeholder:italic placeholder:text-md text-xl"
+                  value={term}
+                  onChange={(e) => setTerm(e.target.value)}
+                />
+              </div>
+              <Button type="submit" className="w-full bangers-regular p-6 bg-pink-700 text-zinc-300 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
+                Search for Dad Jokes
+              </Button>
+              {error && <div className="text-red-800 text-xl bangers-regular">{error}</div>}
+            </form>
+          </div>
+          <div className="bg-muted flex flex-col p-4 overflow-auto lg:mr-6 rounded-2xl lg:w-full md:mx-0 mx-2 sm:m-5 md:min-w-0">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="flex-grow"
+            >
+              {jokeContent}
+            </motion.div>
+          </div>
+        </CardContent>
+        <CardFooter className="text-center justify-center bg-card flex flex-wrap p-0 border-t">
+          <p className="text-muted-foreground">Made with <span className="text-red-500 text-xl">♥</span> by <a href="https://github.com/dreaminhex" className="underline">dreaminhex</a> using jokes from  <a href="https://icanhazdadjoke.com/" className="underline">icanhazdadjoke.com</a></p>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }
