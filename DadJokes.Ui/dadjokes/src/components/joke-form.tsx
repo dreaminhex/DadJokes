@@ -8,11 +8,7 @@ import { GroupedJokeResults } from "./grouped-result"
 import { motion } from "framer-motion"
 import { IconCopy } from "@tabler/icons-react"
 
-export function JokeForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-
+export function JokeForm() {
   const [term, setTerm] = useState("")
   const [jokeResults, setJokeResults] = useState<Record<JokeLength, DadJoke[]> | null>(null)
   const [randomJoke, setRandomJoke] = useState<DadJoke | null>(null)
