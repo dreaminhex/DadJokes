@@ -44,7 +44,7 @@ export function JokeForm() {
 
   if (randomJoke) {
     jokeContent = (
-      <div className="relative rounded-xl border border-border bg-card p-9 shadow-sm">
+      <div className="relative rounded-xl border border-border bg-card p-9 shadow-sm w-full">
         <button
           onClick={() => {
             navigator.clipboard.writeText(randomJoke.joke)
@@ -69,7 +69,7 @@ export function JokeForm() {
       </div>
     )
   } else if (jokeResults) {
-    jokeContent = <div className="overflow-y-auto ">
+    jokeContent = <div className="overflow-y-auto w-full">
       <GroupedJokeResults jokeResults={jokeResults} searchTerm={term} />
     </div>
   } else {
@@ -105,7 +105,7 @@ export function JokeForm() {
               <Input
                 id="searchTerm"
                 type="text"
-                placeholder="bearded clams"
+                placeholder="Go ahead, enter something stupid"
                 className="w-full p-6 placeholder:text-zinc-500 placeholder:italic placeholder:text-lg text-lg"
                 value={term}
                 onChange={(e) => setTerm(e.target.value)}
