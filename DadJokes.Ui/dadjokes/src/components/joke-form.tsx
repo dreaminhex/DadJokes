@@ -97,16 +97,16 @@ export function JokeForm({
                 </p>
               </div>
               <Button onClick={handleRandom} className="w-full p-6 bg-pink-500 text-zinc-200 hover:bg-purple-600 hover:text-primary text-lg hover:cursor-pointer transition-colors">
-                Just Give Me A Random Dad Joke!
+                Random Dad Joke!
               </Button>
               <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                 <span className="bg-card text-muted-foreground relative z-10 px-2">
-                  Or did you want to search for something specific?
+                 Want to search for something specific?
                 </span>
               </div>
               <div className="grid gap-3">
                 <Badge className="text-xl italic font-bold text-left mb-4 bangers-regular p-2 mt-2">
-                  Ok, enter your little jokey joke search term then...
+                  Ok, enter your little jokey joke search term...
                 </Badge>
                 <Input
                   id="searchTerm"
