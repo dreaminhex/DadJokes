@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { getRandomJoke, searchJokes, type DadJoke, type JokeLength } from "@/lib/api"
 import { GroupedJokeResults } from "./grouped-result"
 import { Joke } from "./ui/joke"
@@ -15,17 +15,26 @@ export function JokeForm() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false);
 
+  const bottomRef = useRef<HTMLDivElement | null>(null)
+
+  const scrollToBottomIfMobile = () => {
+    if (window.innerWidth <= 768 && bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   const handleRandom = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     let loadingTimer: NodeJS.Timeout | null = null;
-    loadingTimer = setTimeout(() => setLoading(true), 1000);
+    loadingTimer = setTimeout(() => setLoading(true), 500);
 
     try {
       const joke = await getRandomJoke();
       setRandomJoke(joke);
       setJokeResults(null);
+      scrollToBottomIfMobile();
     } catch {
       setError("Dangit, couldn't think of a random joke.");
     } finally {
@@ -39,12 +48,13 @@ export function JokeForm() {
     setError("");
 
     let loadingTimer: NodeJS.Timeout | null = null;
-    loadingTimer = setTimeout(() => setLoading(true), 1000);
+    loadingTimer = setTimeout(() => setLoading(true), 500);
 
     try {
       const results = await searchJokes(term);
       setJokeResults(results);
       setRandomJoke(null);
+      scrollToBottomIfMobile();
     } catch {
       setError("Provide a search term first, knucklehead.");
     } finally {
@@ -52,7 +62,7 @@ export function JokeForm() {
       setLoading(false);
     }
   };
-  
+
 
   // SonarQube HATES nested ternaries, so we use a more readable approach here.
   let jokeContent: React.ReactNode
@@ -67,7 +77,6 @@ export function JokeForm() {
 
   return (
     <div className="lg:h-screen h-min-screen flex items-center justify-center overflow-hidden">
-
       <Card className="flex flex-col w-full max-w-screen-2xl mx-auto shadow-lg sm:mt-0 lg:rounded-xl overflow-hidden lg:border rounded-none border-0">
         <CardContent className="flex flex-col md:flex-row flex-1 p-0 min-h-0">
           <div className="w-full md:w-1/3 p-6 md:p-8 overflow-auto">
@@ -116,13 +125,16 @@ export function JokeForm() {
                 <span className="bangers-regular text-4xl inline-block">One second while we wake up our writers...</span>
               </div>
             )}
-            {jokeContent}
+            {!loading && (
+              jokeContent
+            )}
           </ScrollArea>
         </CardContent>
         <CardFooter className="text-center justify-center bg-card flex flex-wrap border-t p-0 m-0">
           <p className="text-muted-foreground">Made with <span className="text-red-500 text-2xl pr-1 pl-1">♥</span> by <a href="https://www.dreaminhex.com" className="underline" target="_blank">dreaminhex</a> using jokes from the geniuses at <a href="https://icanhazdadjoke.com/" className="underline">icanhazdadjoke.com</a></p>
         </CardFooter>
       </Card>
+      <div ref={bottomRef} />
     </div>
   )
 }
