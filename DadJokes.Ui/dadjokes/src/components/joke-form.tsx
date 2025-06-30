@@ -83,13 +83,15 @@ export function JokeForm({
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="overflow-hidden p-0">
-        <CardContent className="grid p-0 md:grid-cols-[33%_67%] h-[85vh]">
+      <Card className="overflow-hidden p-0 w-full max-w-screen-lg mx-auto">
+        <CardContent className="flex flex-col md:grid md:grid-cols-[33%_67%] p-0 md:h-[85vh]">
           <div className="p-6 md:p-8">
             <form className="flex flex-col gap-6" onSubmit={handleSearch}>
               <div className="flex flex-col items-center text-center">
                 <img src="/assets/dad.png" alt="Dad Joke Logo" className="w-28 h-24 mb-4" />
-                <h1 className="font-bold mb-5 bangers-regular text-6xl text-blue-300">Welcome to Dad Jokes</h1>
+                <h1 className="font-bold mb-5 bangers-regular text-4xl md:text-6xl text-blue-300">
+                  Welcome to Dad Jokes</h1>
+                <div className="border-t border-border my-4 md:hidden" />
                 <p className="text-muted-foreground text-left">
                   Since you appear to be a person with a fine sense of humor, you may select one of our fine jokes at random, or feel free to search our collection.
                 </p>
@@ -121,7 +123,7 @@ export function JokeForm({
               {error && <div className="text-red-800 text-xl bangers-regular">{error}</div>}
             </form>
           </div>
-          <div className="bg-muted md:flex flex-col p-4 h-full">
+          <div className="bg-muted flex-grow flex flex-col p-4 overflow-y-auto md:h-full">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
