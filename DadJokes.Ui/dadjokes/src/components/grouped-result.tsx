@@ -1,7 +1,6 @@
 import type { DadJoke, JokeLength } from "@/lib/api"
-import { IconCopy } from "@tabler/icons-react"
-import { useState, type JSX } from "react"
 import { Badge } from "@/components/ui/badge"
+import { Joke } from "./ui/joke"
 
 interface GroupedJokeResultsProps {
     jokeResults: Record<JokeLength, DadJoke[]>
@@ -31,54 +30,23 @@ const groupColors: Record<JokeLength, string> = {
  * @returns A JSX element displaying the grouped joke results.
  */
 export function GroupedJokeResults({ jokeResults, searchTerm }: Readonly<GroupedJokeResultsProps>) {
-    const [copiedId, setCopiedId] = useState<string | null>(null)
-
-    const handleCopy = (joke: string, id: string) => {
-        navigator.clipboard.writeText(joke)
-        setCopiedId(id)
-        setTimeout(() => setCopiedId(null), 1500)
-    }
-
     return (
-        <div className="pr-4">
+        <div className="flex-grow overflow-y-auto pr-4 min-h-0">
             {groupOrder.map((group, index) => {
                 const jokes = jokeResults[group] ?? []
-
                 return (
                     <div key={group}>
-                        <Badge className={`text-2xl italic font-bold text-left ml-2 mb-4 bangers-regular p-2 ${index === 0 ? "mt-0" : "mt-6"} ${groupColors[group]}`}>
-                            {groupTitles[group]}
+                        <Badge className={`text-2xl italic font-bold text-left ml-2 mb-4 bangers-regular pr-3 pl-3 ${index === 0 ? "mt-0" : "mt-6"} ${groupColors[group]}`}>
+                            {groupTitles[group]} ({jokes.length})
                         </Badge>
-
                         {jokes.length === 0 ? (
-                            <p className="text-muted-foreground italic text-lg pl-4 text-left">
-                                Didn't find any {group.toLowerCase()} jokes about “{searchTerm}”.
+                            <p className="text-zinc-300 bangers-regular text-xl pl-4 text-left">
+                                Dangit. I couldn't find any {group.toLowerCase()} jokes about “{searchTerm}”.
                             </p>
                         ) : (
-                            <div className="grid gap-4">
+                            <div className="grid gap-8">
                                 {jokes.map((joke) => (
-                                    <div
-                                        key={joke.id}
-                                        className="relative rounded-xl border border-border bg-card p-5 shadow-sm"
-                                    >
-                                        <button
-                                            onClick={() => handleCopy(joke.joke, joke.id)}
-                                            className="absolute top-3 right-3 text-muted-foreground hover:text-blue-600 hover:cursor-pointer transition"
-                                            title="Copy to clipboard"
-                                        >
-                                            <IconCopy size={18} />
-                                        </button>
-                                        <blockquote className="text-base font-serif italic leading-relaxed text-left pr-4 pb-1">
-                                            <span className="text-3xl mr-0.5 align-top text-primary">“</span>
-                                            <span className="text-2xl">{highlightTerm(joke.joke, searchTerm)}</span>
-                                            <span className="text-3xl ml-0.5 align-bottom text-primary">”</span>
-                                        </blockquote>
-                                        {copiedId === joke.id && (
-                                            <span className="absolute bottom-2 right-3 text-xs animate-fade-in italic text-green-600">
-                                                Copied to clipboard!
-                                            </span>
-                                        )}
-                                    </div>
+                                    <Joke key={joke.id} joke={joke.joke} searchTerm={searchTerm} />
                                 ))}
                             </div>
                         )}
@@ -88,31 +56,3 @@ export function GroupedJokeResults({ jokeResults, searchTerm }: Readonly<Grouped
         </div>
     )
 }
-
-/**
- * Highlights the specified term in the given text.
- * @param text The text to search within.
- * @param term The term to highlight.
- * @returns A JSX element with the highlighted term.
- */
-function highlightTerm(text: string, term: string): JSX.Element {
-    if (!term) return <>{text}</>
-
-    const regex = new RegExp(`(${term})`, "gi")
-    const parts = text.split(regex)
-
-    return (
-        <>
-            {parts.map((part, i) =>
-                part.toLowerCase() === term.toLowerCase() ? (
-                    <mark key={`term-part-key-${i}`} className="bg-yellow-300 border-2 rounded-sm pl-1 pr-1 ml-2 mr-1 text-black font-semibold">
-                        {part}
-                    </mark>
-                ) : (
-                    <span key={`term-part-key-${i}`}>{part}</span>
-                )
-            )}
-        </>
-    )
-}
-
